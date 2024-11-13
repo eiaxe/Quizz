@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../Home/Untitled_design-removebg-preview.png'; // Adjust the path
 import privacyIcon from '../Home/Privacy_e_Cookie_Policy_registerit_iubenda_Features_Icon.png'; // Adjust the path
 import termsIcon from '../Home/terms_and_conditions-b2ecac04071503f53269125183052405bee78d8199cd799047bf382eaf79e6c3.png'; // Adjust the path
 
 const HomePage = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+
   const handleScrollTo = (id) => {
       const element = document.getElementById(id);
       if (element) {
@@ -12,7 +20,7 @@ const HomePage = () => {
       }
   };
 
-  return (
+  return (  
       <>
           <style>
               {`
@@ -321,7 +329,29 @@ const HomePage = () => {
               .circle3 { width: 80px; height: 80px; top: 30%; left: 80%; }
               .circle4 { width: 120px; height: 120px; top: 70%; left: 10%; }
               .circle5 { width: 50px; height: 50px; top: 20%; left: 50%; }
+              .login-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.login-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+
             `}
+              
                   </style>
             <div>
               {/* Navbar */}
@@ -329,6 +359,7 @@ const HomePage = () => {
                 <div className="logo">
                 <img src={logo} alt="Quizzy Logo" style={{ width: '30px', height: '40px' }} />
                   Quizzy
+
                 </div>
                 <div className="menu">
                   <a href="#home" onClick={() => handleScrollTo('home')}>Home</a>
@@ -377,6 +408,7 @@ const HomePage = () => {
                     <li>Quizzing can improve retention rates by up to 90%. That’s better than a cup of coffee for keeping you awake!</li>
                     <li>Learning is like a quiz: sometimes you get the answer wrong, but you just laugh it off and try again!</li>
                   </ul>
+                  <Link to="/index" className="login-btn">Go to Login</Link>
                 </div>
               </section>
         
